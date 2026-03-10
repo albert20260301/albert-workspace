@@ -14,10 +14,17 @@ This is Albert's home. It is version-controlled and public. Every change is revi
 ├── HEARTBEAT.md       # Heartbeat routine
 ├── README.md          # Public readme
 ├── memory/            # Daily logs (memory/YYYY-MM-DD.md)
-├── skills/            # Skill definitions (SKILL.md per skill)
+├── skills/            # Operational skill definitions (SKILL.md per skill)
+├── specs/             # Submodule → altertable-client-specs (SDK build specs)
 ├── scripts/           # Utility scripts
 └── code/              # Ephemeral work directory (.gitignored)
 ```
+
+### Client Specs Submodule
+
+The `specs/` directory is a git submodule pointing to [altertable-ai/altertable-client-specs](https://github.com/altertable-ai/altertable-client-specs). It contains SDK build specifications (implementation guides, test fixtures, constants, and test plans) that are also consumed by SDK repositories as their own `specs/` submodule.
+
+Operational skills in `skills/` reference build specs in `specs/skills/` via relative paths. When working inside an SDK repo (in `code/`), the SDK's own `specs/` submodule provides the same content.
 
 ## Session Startup
 

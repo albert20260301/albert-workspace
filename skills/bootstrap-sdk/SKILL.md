@@ -7,15 +7,15 @@ description: Bootstrap or update an Altertable SDK repository from a versioned A
 
 ## Purpose
 
-Use this skill to initialize or update an SDK repository against a specific version of `altertable-ai/altertable-api-specs`. All contributions go through a fork + branch + PR workflow — the maintainer agent has no direct write access to the target repository.
+Use this skill to initialize or update an SDK repository against a specific version of `altertable-ai/altertable-client-specs`. All contributions go through a fork + branch + PR workflow — the maintainer agent has no direct write access to the target repository.
 
 ## Related Skills
 
 This skill coordinates with other SDK development skills:
 
-- **[build-lakehouse-sdk](../build-lakehouse-sdk/SKILL.md)**: Implementation guide for Lakehouse API clients
-- **[build-product-analytics-sdk](../build-product-analytics-sdk/SKILL.md)**: Implementation guide for Product Analytics SDKs
-- **[build-http-sdk](../build-http-sdk/SKILL.md)**: HTTP client best practices (referenced by build-* skills)
+- **[build-lakehouse-sdk](../../specs/skills/build-lakehouse-sdk/SKILL.md)**: Implementation guide for Lakehouse API clients
+- **[build-product-analytics-sdk](../../specs/skills/build-product-analytics-sdk/SKILL.md)**: Implementation guide for Product Analytics SDKs
+- **[build-http-sdk](../../specs/skills/build-http-sdk/SKILL.md)**: HTTP client best practices (referenced by build-* skills)
 - **[sync-repos](../sync-repos/SKILL.md)**: Cross-repo consistency for community files and config
 - **[release-sdk](../release-sdk/SKILL.md)**: Versioning, changelog, and registry publishing conventions
 
@@ -24,7 +24,7 @@ This skill coordinates with other SDK development skills:
 Collect before starting:
 
 - **Target repo**: GitHub repository slug (e.g. `altertable-ai/altertable-lakehouse-ruby`)
-- **Spec tag**: Tag of `altertable-ai/altertable-api-specs` to target (e.g. `v0.1.0`)
+- **Spec tag**: Tag of `altertable-ai/altertable-client-specs` to target (e.g. `v0.1.0`)
 - **SDK type**: Which SDK skill applies (`lakehouse-sdk`, `product-analytics-sdk`, etc.)
 
 ## Workflow
@@ -66,7 +66,7 @@ Before adding any code or submodules, CI must be operational to validate subsequ
 **Initial bootstrap** (submodule does not exist yet):
 
 ```bash
-git submodule add https://github.com/altertable-ai/altertable-api-specs.git specs
+git submodule add https://github.com/altertable-ai/altertable-client-specs.git specs
 git -C specs checkout <spec-tag>
 ```
 
@@ -74,7 +74,7 @@ Then pin the submodule to the exact tag commit and commit:
 
 ```bash
 git add .gitmodules specs
-git commit -m "chore: add altertable-api-specs submodule at <spec-tag>"
+git commit -m "chore: add altertable-client-specs submodule at <spec-tag>"
 ```
 
 **Spec update** (submodule already exists):
@@ -97,7 +97,7 @@ git -C specs diff <old-tag>..<new-spec-tag> -- .
 
 ```bash
 git add specs
-git commit -m "chore: update altertable-api-specs submodule to <new-spec-tag>"
+git commit -m "chore: update altertable-client-specs submodule to <new-spec-tag>"
 ```
 
 ### Phase 4: Populate community files (initial bootstrap only)
@@ -120,8 +120,8 @@ For an initial bootstrap (repo has no community files yet), copy all managed fil
 
 Read the specs submodule to understand the API surface, then apply the appropriate SDK skill:
 
-- For Lakehouse SDKs: read and follow [build-lakehouse-sdk](../build-lakehouse-sdk/SKILL.md)
-- For Product Analytics SDKs: read and follow [build-product-analytics-sdk](../build-product-analytics-sdk/SKILL.md)
+- For Lakehouse SDKs: read and follow [build-lakehouse-sdk](../../specs/skills/build-lakehouse-sdk/SKILL.md)
+- For Product Analytics SDKs: read and follow [build-product-analytics-sdk](../../specs/skills/build-product-analytics-sdk/SKILL.md)
 
 **Initial bootstrap**: implement everything required by the skill from scratch.
 

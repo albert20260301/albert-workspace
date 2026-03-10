@@ -9,9 +9,9 @@ description: Defines conventions for releasing open-source SDKs and libraries. U
 
 This skill is referenced by `build-*` skills during their packaging/release phases:
 
-- **[bootstrap-sdk](../bootstrap-sdk/SKILL.md)**: Repo initialization and `altertable-api-specs` submodule workflow
-- **[build-lakehouse-sdk](../build-lakehouse-sdk/SKILL.md)**: Lakehouse API client implementation
-- **[build-product-analytics-sdk](../build-product-analytics-sdk/SKILL.md)**: Product Analytics SDK implementation
+- **[bootstrap-sdk](../bootstrap-sdk/SKILL.md)**: Repo initialization and `altertable-client-specs` submodule workflow
+- **[build-lakehouse-sdk](../../specs/skills/build-lakehouse-sdk/SKILL.md)**: Lakehouse API client implementation
+- **[build-product-analytics-sdk](../../specs/skills/build-product-analytics-sdk/SKILL.md)**: Product Analytics SDK implementation
 - **[sync-repos](../sync-repos/SKILL.md)**: Cross-repo consistency
 
 ## Versioning
