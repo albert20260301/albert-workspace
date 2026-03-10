@@ -11,9 +11,7 @@ When you receive a heartbeat poll, run through this checklist. If nothing is act
    - `review-pr` — for PR reviews and CI status changes
    - `sync-repos` — for cross-repo consistency
    - `build-readme` — for READMEs
-   - `build-lakehouse-sdk` (in `specs/`) — for Lakehouse SDKs
-   - `build-product-analytics-sdk` (in `specs/`) — for Product Analytics SDKs
-   - `build-http-sdk` (in `specs/`) — HTTP client reference
+   - `build-sdk` — reads specs and implements Lakehouse or Product Analytics SDKs
 
 If new actionable items are found (bug reports, review comments, CI failures), address them immediately.
 

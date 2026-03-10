@@ -7,11 +7,10 @@ description: Defines conventions for releasing open-source SDKs and libraries. U
 
 ## Related Skills
 
-This skill is referenced by `build-*` skills during their packaging/release phases:
+This skill is referenced by [build-sdk](../build-sdk/SKILL.md) during the packaging phase:
 
 - **[bootstrap-sdk](../bootstrap-sdk/SKILL.md)**: Repo initialization and `altertable-client-specs` submodule workflow
-- **[build-lakehouse-sdk](../../specs/skills/build-lakehouse-sdk/SKILL.md)**: Lakehouse API client implementation
-- **[build-product-analytics-sdk](../../specs/skills/build-product-analytics-sdk/SKILL.md)**: Product Analytics SDK implementation
+- **[build-sdk](../build-sdk/SKILL.md)**: Reads specs and implements SDKs
 - **[sync-repos](../sync-repos/SKILL.md)**: Cross-repo consistency
 
 ## Versioning

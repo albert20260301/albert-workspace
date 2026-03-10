@@ -13,8 +13,7 @@ Use this skill to review pull requests submitted to any Altertable SDK repositor
 
 - **[release-sdk](../release-sdk/SKILL.md)**: Naming, versioning, and changelog conventions
 - **[sync-repos](../sync-repos/SKILL.md)**: Repository inventory and community file standards
-- **[build-lakehouse-sdk](../../specs/skills/build-lakehouse-sdk/SKILL.md)**: Lakehouse SDK implementation patterns
-- **[build-product-analytics-sdk](../../specs/skills/build-product-analytics-sdk/SKILL.md)**: Product Analytics SDK patterns
+- **Specs** (in `specs/` submodule): [lakehouse/SPEC.md](../../specs/lakehouse/SPEC.md), [product-analytics/SPEC.md](../../specs/product-analytics/SPEC.md) — requirements to check against
 
 ## Review Workflow
 

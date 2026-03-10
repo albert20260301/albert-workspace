@@ -13,9 +13,7 @@ Use this skill to initialize or update an SDK repository against a specific vers
 
 This skill coordinates with other SDK development skills:
 
-- **[build-lakehouse-sdk](../../specs/skills/build-lakehouse-sdk/SKILL.md)**: Implementation guide for Lakehouse API clients
-- **[build-product-analytics-sdk](../../specs/skills/build-product-analytics-sdk/SKILL.md)**: Implementation guide for Product Analytics SDKs
-- **[build-http-sdk](../../specs/skills/build-http-sdk/SKILL.md)**: HTTP client best practices (referenced by build-* skills)
+- **[build-sdk](../build-sdk/SKILL.md)**: Reads specs and implements SDKs (dispatched in Phase 5)
 - **[sync-repos](../sync-repos/SKILL.md)**: Cross-repo consistency for community files and config
 - **[release-sdk](../release-sdk/SKILL.md)**: Versioning, changelog, and registry publishing conventions
 
@@ -118,12 +116,12 @@ For an initial bootstrap (repo has no community files yet), copy all managed fil
 
 ### Phase 5: Implement or update the SDK
 
-Read the specs submodule to understand the API surface, then apply the appropriate SDK skill:
+Use the [build-sdk](../build-sdk/SKILL.md) skill. It reads the spec from `specs/<type>/SPEC.md`:
 
-- For Lakehouse SDKs: read and follow [build-lakehouse-sdk](../../specs/skills/build-lakehouse-sdk/SKILL.md)
-- For Product Analytics SDKs: read and follow [build-product-analytics-sdk](../../specs/skills/build-product-analytics-sdk/SKILL.md)
+- For Lakehouse SDKs: `specs/lakehouse/SPEC.md`
+- For Product Analytics SDKs: `specs/product-analytics/SPEC.md`
 
-**Initial bootstrap**: implement everything required by the skill from scratch.
+**Initial bootstrap**: implement everything required by the spec from scratch.
 
 **Spec update**: use the spec diff from Phase 3 to identify what changed. Only implement what is new or modified. Document breaking changes in `CHANGELOG.md`.
 

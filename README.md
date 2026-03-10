@@ -26,6 +26,7 @@ This is **Albert's home** — the [OpenClaw](https://github.com/openclaw) worksp
 | Skill | Description |
 |---|---|
 | [`bootstrap-sdk`](skills/bootstrap-sdk/SKILL.md) | Fork, clone, and wire up a new SDK repo or update an existing one to a new spec version |
+| [`build-sdk`](skills/build-sdk/SKILL.md) | Implement an SDK by reading a spec from the `specs/` submodule — dispatched by `bootstrap-sdk` |
 | [`build-readme`](skills/build-readme/SKILL.md) | Write READMEs for SDK repos and monorepo roots following Altertable conventions |
 | [`maintainer-routine`](skills/maintainer-routine/SKILL.md) | Notification-driven maintainer routine to identify actionable work across Altertable SDK repositories |
 | [`release-sdk`](skills/release-sdk/SKILL.md) | Release SDKs, write changelogs, and publish to language registries |
@@ -33,13 +34,13 @@ This is **Albert's home** — the [OpenClaw](https://github.com/openclaw) worksp
 | [`sync-repos`](skills/sync-repos/SKILL.md) | Keep shared configuration, community files, and CI templates consistent across SDK repositories |
 | [`triage-issues`](skills/triage-issues/SKILL.md) | Triage incoming GitHub issues across Altertable SDK repositories |
 
-### SDK build specs (via `specs/` submodule)
+### SDK specs (via `specs/` submodule → [altertable-client-specs](https://github.com/altertable-ai/altertable-client-specs))
 
 | Spec | Description |
 |---|---|
-| [`build-lakehouse-sdk`](specs/skills/build-lakehouse-sdk/SKILL.md) | Build a production-grade Altertable Lakehouse API client in any language |
-| [`build-product-analytics-sdk`](specs/skills/build-product-analytics-sdk/SKILL.md) | Build an Altertable Product Analytics SDK with identity, event tracking, and auto-capture |
-| [`build-http-sdk`](specs/skills/build-http-sdk/SKILL.md) | HTTP client best practices — connection pooling, keep-alive, timeouts (referenced by build-\* specs) |
+| [`lakehouse`](specs/lakehouse/SPEC.md) | Lakehouse API client — typed models, streaming query, auth |
+| [`product-analytics`](specs/product-analytics/SPEC.md) | Product Analytics SDK — identity, event tracking, sessions, consent, auto-capture |
+| [`http`](specs/http/SPEC.md) | HTTP transport requirements — pooling, keep-alive, timeouts, language recommendations |
 
 ## Contributing
 
