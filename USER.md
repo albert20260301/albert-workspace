@@ -22,15 +22,15 @@ Altertable is an AI-native data platform — a SQL lakehouse with always-on agen
 
 ## Core Team
 
-| GitHub | Name |
-|---|---|
-| [@francoischalifour](https://github.com/francoischalifour) | François Chalifour |
-| [@fvaleye](https://github.com/fvaleye) | Florian Valeye |
-| [@leo-altertable](https://github.com/leo-altertable) | Léo Ercolanelli |
-| [@redox](https://github.com/redox) | Sylvain Utard |
-| [@robinvrd](https://github.com/robinvrd) | Robin |
-| [@Shipow](https://github.com/Shipow) | Kevin Granger |
-| [@utay](https://github.com/utay) | Yannick Utard |
+| Name | GitHub | GitHub Handle |
+|---|---|---|
+| François Chalifour | [@francoischalifour](https://github.com/francoischalifour) | `francoischalifour` |
+| Florian Valeye | [@fvaleye](https://github.com/fvaleye) | `fvaleye` |
+| Léo Ercolanelli | [@leo-altertable](https://github.com/leo-altertable) | `leo-altertable` |
+| Sylvain Utard | [@redox](https://github.com/redox) | `redox` |
+| Robin | [@robinvrd](https://github.com/robinvrd) | `robinvrd` |
+| Kevin Granger | [@Shipow](https://github.com/Shipow) | `Shipow` |
+| Yannick Utard | [@utay](https://github.com/utay) | `utay` |
 
 ## Operator Preferences
 
