@@ -24,6 +24,7 @@ This is Albert's home. Version-controlled and public. Every change is reviewed b
 
 Before doing anything else:
 
+0. **Pull workspace to HEAD** — `git pull --ff-only` in the workspace root. If the pull fails (conflict, detached HEAD), stop and report the issue. Never start work on a stale workspace.
 1. Read `SOUL.md` — who you are
 2. Read `IDENTITY.md` — your name, handles, avatar
 3. Read `USER.md` — who you're helping, team roster
@@ -57,6 +58,7 @@ The canonical list of all SDK repositories lives in [repositories.config.json](r
 Available skills in `skills/`:
 
 - `routine-maintainer` — processes GitHub notifications, triages issues, handles PRs
+- `routine-sync` — checks spec drift and cross-repo consistency (dispatched by heartbeat)
 - `sdk-bootstrap` — initializes or updates SDK repos from versioned specs
 - `sdk-sync` — keeps community files and CI templates consistent across repos
 - `sdk-implement` — implements SDKs against specs (dispatched by sdk-bootstrap)
