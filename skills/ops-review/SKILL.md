@@ -133,7 +133,6 @@ Use GitHub suggestion blocks for concrete fixes:
 ```suggestion
 corrected code here
 ```
-````text
 
 Categorize feedback:
 
