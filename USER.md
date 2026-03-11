@@ -28,7 +28,7 @@ Altertable is an AI-native data platform — a SQL lakehouse with always-on agen
 | [@fvaleye](https://github.com/fvaleye) | Florian Valeye |
 | [@leo-altertable](https://github.com/leo-altertable) | Léo Ercolanelli |
 | [@redox](https://github.com/redox) | Sylvain Utard |
-| [@robinvrd](https://github.com/robinvrd) | Robin Verdier |
+| [@robinvrd](https://github.com/robinvrd) | Robin |
 | [@Shipow](https://github.com/Shipow) | Kevin Granger |
 | [@utay](https://github.com/utay) | Yannick Utard |
 
