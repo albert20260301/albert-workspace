@@ -30,6 +30,7 @@ jobs:
         with:
           args: >-
             --exclude-loopback
+            --exclude 'https://www.conventionalcommits.org/'
             '**/*.md'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

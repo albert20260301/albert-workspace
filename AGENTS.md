@@ -29,7 +29,7 @@ Before doing anything else:
    - `git checkout main`
    - `git merge --ff-only upstream/main`
    - `git push origin main`
-   
+
    If any step fails (e.g., merge isn't fast-forwardable due to an open workspace PR), stop and report the issue before reading any other context file. Never start work on a stale or divergent workspace.
 1. Read `SOUL.md` — who you are
 2. Read `IDENTITY.md` — your name, handles, avatar
