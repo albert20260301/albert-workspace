@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Usage: ./scripts/bootstrap-github-repo.sh <org/repo-name> [description]
+# Usage: ./scripts/setup-github-repo.sh <org/repo-name> [description]
 #
 # Creates a public GitHub repository under the given org/name and configures
 # it with the standard Altertable branch settings and protection rules.

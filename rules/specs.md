@@ -18,11 +18,11 @@ altertable-client-specs/
 ## Update event chain
 
 ```text
-new tag pushed → heartbeat runs spec-status.sh → outdated SDKs detected
-→ tracking issue created → sdk-bootstrap opens update PRs → sdk-implement implements diff
+new tag pushed → heartbeat runs routine-sync → spec-status.sh detects outdated SDKs
+→ sdk-bootstrap opens update PRs → sdk-implement implements diff
 ```
 
-`spec-status.sh --quick` on regular heartbeats (1 API call); full scan when tag changed or on full heartbeats.
+Progress logged in `memory/YYYY-MM-DD.md`. `spec-status.sh --quick` on regular heartbeats (1 API call); full scan when tag changed or on full heartbeats.
 
 | Status | Meaning |
 |--------|---------|
@@ -30,7 +30,7 @@ new tag pushed → heartbeat runs spec-status.sh → outdated SDKs detected
 | `OUTDATED` | Pinned to older tag — run sdk-bootstrap |
 | `MISSING` | No specs submodule — run sdk-bootstrap |
 | `UNKNOWN` | Pinned SHA not matched to a tag — investigate |
-| `NOT_FOUND` | Repo doesn't exist yet — open tracking issue |
+| `NOT_FOUND` | Repo doesn't exist yet — run sdk-bootstrap Phase 0 if Albert has org permissions, otherwise log blocker in daily notes and wait for human |
 
 ## Implementing a spec update
 

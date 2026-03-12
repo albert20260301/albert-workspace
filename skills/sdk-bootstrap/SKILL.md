@@ -23,12 +23,12 @@ Collect before starting:
 
 **Skip this phase if the target repo already exists.**
 
-If `spec-status.sh` reports `NOT_FOUND` (repo in `repositories.config.json` doesn't exist yet), create it first using `bootstrap-github-repo.sh`. This script sets up branch protection, merge settings, and an initial commit.
+If `spec-status.sh` reports `NOT_FOUND` (repo in `repositories.config.json` doesn't exist yet), create it first using `setup-github-repo.sh`. This script sets up branch protection, merge settings, and an initial commit.
 
 **This is a human-gated action** — requires org permissions. If Albert doesn't have sufficient permissions, open a tracking issue in `albert-workspace` with the `spec-update` label listing which repos need to be created, and wait for a human to create them.
 
 1. Determine the repo description from the SDK type and language (e.g., "Altertable Lakehouse SDK for Ruby").
-2. Run `bash scripts/bootstrap-github-repo.sh <repo> "<description>"`.
+2. Run `bash scripts/setup-github-repo.sh <repo> "<description>"`.
 3. Verify the repo was created and has the expected branch protection rules.
 4. Proceed to Phase 1.
 
