@@ -67,6 +67,22 @@ Use **release-please** GitHub Action for:
 3. GitHub Release creation with release notes.
 4. Triggering registry publish on release.
 
+Because Altertable squash-merges pull requests and release-please derives release notes and version bumps from the merged commit subject, every repository using release-please must validate pull request titles in CI. The required gate is a dedicated GitHub Actions workflow using `amannn/action-semantic-pull-request@v5`, triggered on `pull_request_target` for `opened`, `edited`, and `synchronize`. Allowed title types are:
+
+- `feat`
+- `fix`
+- `perf`
+- `revert`
+- `docs`
+- `style`
+- `chore`
+- `refactor`
+- `test`
+- `build`
+- `ci`
+
+Name the workflow clearly (for example `Semantic Pull Request`), keep it separate from language-specific CI when possible, and treat missing PR-title validation as release automation drift that must be patched across affected repositories.
+
 Commit message prefixes:
 
 | Prefix | Version Bump |
