@@ -105,6 +105,12 @@
       "kind": "product-analytics",
       "package": "altertable-rust",
       "registry": "crates-io"
+    },
+    {
+      "repo": "altertable-ai/dbt-altertable",
+      "kind": "tooling",
+      "package": "dbt-altertable",
+      "registry": "github-releases"
     }
   ]
 }
