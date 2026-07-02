@@ -1,6 +1,6 @@
 ---
 name: ops-triage
-description: Triage incoming GitHub issues across Altertable SDK repositories. Use when processing new issues, labeling bugs and feature requests, detecting duplicates, requesting minimal reproductions, or marking stale issues.
+description: Triage incoming GitHub issues across supervised Altertable repositories. Use when processing new issues, labeling bugs and feature requests, detecting duplicates, requesting minimal reproductions, or marking stale issues.
 ---
 
 # Issue Triage
@@ -38,7 +38,7 @@ Read the issue title, body, and any attached logs or code.
 - **Bug report** → apply `bug` label
 - **Feature request** → apply `enhancement` label
 - **Usage question** → apply `question` label
-- **Security vulnerability** → apply `security` label, close the issue, and comment directing the author to `SECURITY.md` (vulnerabilities must not be discussed publicly)
+- **Security vulnerability** → apply `security` and `needs-human-review`, comment directing the author to `SECURITY.md`, and ask a core team member to close the public issue (vulnerabilities must not be discussed publicly)
 
 ### Step 2: Check for duplicates
 
@@ -51,8 +51,8 @@ gh issue list --repo <repo> --state all --search "<keywords>" --limit 20
 If a duplicate is found:
 
 1. Apply `duplicate` label
-2. Comment with teammate structure: what you checked (e.g. "Searched for similar issues"), what you're doing ("Closing as duplicate of #<number>"), and what happens next ("Discussion continues there.")
-3. Close the issue
+2. Comment with teammate structure: what you checked (e.g. "Searched for similar issues"), what you're recommending ("Duplicate of #<number>; a core team member can close this"), and what happens next ("Discussion continues there.")
+3. Apply `needs-human-review` and ask a core team member to close the issue if closure is appropriate. Albert cannot close issues.
 
 ### Step 3: Validate bug reports
 
@@ -93,7 +93,7 @@ After classification:
 - **Actionable bugs**: leave open, ensure labels are correct
 - **Feature requests**: leave open with `enhancement`
 - **Questions**: answer if straightforward, otherwise apply `question` and leave open
-- **Invalid**: apply `invalid`, comment explaining why, close
+- **Invalid**: apply `invalid` and `needs-human-review`, comment explaining why it should be closed, and ask a core team member to close it
 
 ## Staleness Management
 
@@ -114,15 +114,15 @@ For each stale issue:
 ```text
 No updates in 30 days. Marking as stale.
 
-**What happens next**: This will be closed in 7 days if no further activity. If it's still relevant, respond with updated information and we'll reopen.
+**What happens next**: If there is still no updated information in 7 days, I'll ask a core team member whether to close it. If it's still relevant, respond with updated information.
 ```
 
-### Closing stale
+### Escalating stale
 
 Issues with `stale` label and no activity for 7 more days:
 
-1. Comment: `Closing due to inactivity. Feel free to reopen with updated details if this is still relevant.`
-2. Close the issue
+1. Comment: `No activity after the stale notice. A core team member can close this if there is still no updated information.`
+2. Apply `needs-human-review` and ask a core team member to close the issue if appropriate. Albert cannot close issues.
 
 ## Batch Triage
 
@@ -159,7 +159,7 @@ Thanks for reaching out! This looks like a usage question rather than a bug.
 
 [Provide brief answer or link to relevant docs]
 
-**What happens next**: If this resolves your question, we can close the issue. If you believe this is actually a bug, please reopen with a minimal reproduction case and I'll triage it as a bug.
+**What happens next**: If this resolves your question, a core team member can close the issue. If you believe this is actually a bug, please reply with a minimal reproduction case and I'll triage it as a bug.
 ```
 
 ### Insufficient information
@@ -178,8 +178,8 @@ Thanks for reporting this. To investigate, I need:
 ## Acceptance Checklist
 
 - [ ] All new issues have at least one label
-- [ ] Duplicates are linked and closed
+- [ ] Duplicates are linked and escalated for closure when appropriate
 - [ ] Bug reports without repro have `needs-repro` or `needs-info`
-- [ ] Security issues are redirected to SECURITY.md and closed
-- [ ] Stale issues are marked and eventually closed
+- [ ] Security issues are redirected to SECURITY.md and escalated for closure
+- [ ] Stale issues are marked and escalated after the waiting period
 - [ ] No issues left unlabeled after triage pass
