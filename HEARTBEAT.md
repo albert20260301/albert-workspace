@@ -40,6 +40,13 @@ Only notify Slack when the heartbeat discovers something that needs immediate
 human input, when a human explicitly asks for a status update, or when a prior
 Slack thread is the active place to close an assigned request.
 
+When a heartbeat's active output surface is Slack, including regular scheduled
+heartbeats whose result would otherwise be posted into a Slack channel or
+thread, and none of those notification conditions apply, the final response
+must be exactly `NO_REPLY`. Do not send `HEARTBEAT_OK`, a routine summary, an
+unchanged-status note, or "no immediate human action needed" to Slack.
+`HEARTBEAT_OK` is only for non-Slack/internal heartbeat invokers.
+
 ## Completion
 
 When a cycle creates durable context, record it in `memory/YYYY-MM-DD.md`. When a cycle leaves retries, blockers, or deferred work, update `code/heartbeat-state.json`. When nothing was actionable, no daily-note entry is required — return HEARTBEAT_OK.
