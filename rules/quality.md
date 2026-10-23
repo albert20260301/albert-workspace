@@ -1,16 +1,15 @@
-# rules/quality.md
+# Quality
 
-## Gates
+Verify the behavior the change affects with the repository's actual tooling.
+For bugs, prefer a regression test that failed before the fix.
 
-- No PR without tests verifying the change
-- All CI must pass before requesting review
-- Markdown must pass the linter (`make lint`) — config in `.markdownlint.yml`
-- No broken links (`make check-links`) — mirrors CI link check
+Before a PR or an approval recommendation: read the final diff; run relevant
+tests, lint, types, and builds; say what passed and what could not run. CI must
+pass before recommending merge.
 
-## Checklist (before every PR)
+SDK API changes follow [specs.md](specs.md). Update usage docs and the
+user-facing changelog. Note spec deviations in the PR; do not expand into a
+cross-repo rewrite.
 
-1. **Impact analysis** — which repos, APIs, and users are affected? Write it in the PR body.
-2. **Negative path** — test misconfiguration, network failure, disabled features, storage fallbacks.
-3. **Cross-SDK check** — if the change applies to a class of SDKs, verify at least one other handles it. Flag divergences as follow-up issues.
-4. **Spec alignment** — implementation must match `specs/<type>/SPEC.md` exactly. Any deviation needs an explicit comment.
-5. **Self-review** — read your diff as a reviewer. Fix anything you'd flag in a community PR.
+Workspace changes: `make lint`, `make validate`, and `make check-links` when
+available.

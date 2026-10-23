@@ -1,0 +1,13 @@
+{
+  "name": "albert-workspace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "1.3.4",
+    "rumdl": "0.3.0",
+    "typescript": "5.9.3"
+  }
+}

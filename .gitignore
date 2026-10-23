@@ -1,7 +1,10 @@
-.openclaw
-openclaw-workspace-state.json
 code/
 memory/
+MEMORY.md
+DREAMS.md
+.env*
+!.env.example
 .DS_Store
 .rumdl-cache/
 .rumdl_cache/
+node_modules/

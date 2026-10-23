@@ -1,28 +1,20 @@
-# rules/contribution.md
+# Contribution
 
-## Workflow
+Work in `code/` (gitignored). One branch per change.
 
-All work in `code/` (`.gitignored`, ephemeral). One branch per change, never mix unrelated changes.
-
-1. **Fork** target repo to `albert20260301`
-2. **Clone** into `code/<repo-name>`, configure git identity (see `TOOLS.md`)
-3. **Branch** from upstream `main`: `fix/<issue>-<desc>` or `feat/<desc>`
-4. **Work** — commit, push to fork
-5. **Open PR** against upstream `main`
-   - PR title must follow [Conventional Commits](https://www.conventionalcommits.org/) (`type(scope): description`) since all commits are squash-merged
-   - PR title and PR description must always reflect the actual changes in the PR (no drift)
-   - If PR scope changes during review, update both title and description immediately before merge
-   - We squash-merge with the PR title + PR description, so they become part of permanent history
-6. **Clean up** after merge — delete fork branch and local clone
+1. Fork the target repo to `albert20260301`.
+2. Clone into `code/<repo-name>` and set git identity from [AGENTS.md](../AGENTS.md).
+3. Branch from upstream `main`: `fix/<issue>-<desc>` or `feat/<desc>`.
+4. Push to the fork and open a PR against upstream `main`. Title uses
+   [Conventional Commits](https://www.conventionalcommits.org/). Title and
+   description must match the final diff (squash merge).
+5. After a human merge or release, verify the result, finish promised replies,
+   and delete finished task-owned branches and clones.
 
 ```bash
 git fetch upstream
 git checkout -b <new-branch> upstream/main
 ```
 
-## Stacked PRs on contributor branches
-
-When a contributor PR has fixable issues (CI failures, missing changelog, obvious improvements), open a PR targeting the contributor's branch (`base: <contributor-branch>`) rather than blocking them. Assign the contributor if GitHub permits it, ask a core team member to review via a PR comment ([rules/team.md](team.md#requesting-reviews)), and comment on the original PR linking to the stacked PR.
-
-Use for: CI failures with a clear fix, obvious improvements that unblock merge.  
-Don't use for: substantive design changes or anything the contributor may disagree with — comment first.
+For a small welcome mechanical fix, offer a PR onto the contributor's branch.
+Do not push to their branch without authority. Comment first on design changes.

@@ -1,20 +1,33 @@
-# rules/communication.md
+# Communication
 
-## GitHub
+Post when you have a finding, an answer, an unblock, or a specific decision.
+Read the thread first. Lead with the useful fact and a link. Keep uncertainty
+explicit. Tag a person only for a concrete request.
 
-- Reply to specific threads, not generic top-level comments.
-- Do not post a comment when a heartbeat finds nothing actionable — return HEARTBEAT_OK to the invoker only; no GitHub activity.
-- Close the loop: acknowledge feedback, state what you did, mark resolved.
-- When blocked: explain what you tried, what you found, and what decision you need. Apply `needs-human-review`.
-- **Attribution**: when tagging or mentioning someone on GitHub (review requests, pings, escalations), tag the person who requested the action — not an arbitrary team member. If an instruction came from Slack, the requester is the person who sent the Slack message. If no specific requester, fall back to recent commit activity or round-robin from `USER.md`.
-- Within 5 minutes of posting, edit in place instead of adding a new comment — unless the update needs to surface as a new notification.
-  - Prefer `gh pr edit --body-file` for PR descriptions.
-  - Prefer `gh issue comment --edit-last --body-file` (or `gh api PATCH` with `--input`) for comments.
+## Asking people
 
-### Markdown-safe posting (required)
+Run `bun scripts/heartbeat-state.ts can-ask <url> <who>` before any question or
+ping. Exit 2 prints the open ask — do not post. Exit 1 is an error. After posting,
+record `asked` (`who`, `at`, `url`, `question`, `default_at`, `default_action`)
+and set `next_check_at` to `default_at`.
 
-- Never pass markdown containing backticks using double-quoted shell strings (command substitution can strip content).
-- For `gh pr create`, `gh pr edit`, `gh issue create`, `gh issue comment`, and `gh pr comment`, always pass rich text via `--body-file` with a single-quoted heredoc:
+Ask once per decision, in one thread. If it is still waiting, list it once in
+the Friday report. When they reply, delete `asked` and act. At `default_at`, do
+`default_action` without posting again.
+
+```text
+Decision needed from @login: <yes/no question>. If I don't hear back by <date>,
+I'll <reversible default>.
+```
+
+Silence is native: `NO_REPLY`, or `heartbeat_respond` with `notify: false`. Do
+not put those tokens in a GitHub comment.
+
+## Posting safely
+
+Keep secrets and private Slack out of public threads and out of git. For
+`gh pr create|edit` and `gh issue|pr comment`, use `--body-file` with a quoted
+heredoc:
 
 ```bash
 gh pr edit <n> --body-file - <<'EOF'
@@ -23,28 +36,10 @@ gh pr edit <n> --body-file - <<'EOF'
 EOF
 ```
 
-For `gh api PATCH`, use `-F body=@-` to read the body from stdin (same heredoc pattern):
+Never interpolate rich text into shell arguments.
 
-```bash
-gh api repos/<owner>/<repo>/pulls/<number> -X PATCH -F body=@- <<'EOF'
-## Summary
-- keep `inline-code` intact
-EOF
-```
+## Direct vs background
 
-- Never send markdown bodies as JSON escaped strings like `"## Summary\\n- item"`; GitHub will render literal `\n`.
-- If a post lands malformed, patch immediately with `gh ... --body-file`.
-
-## Slack
-
-- Lead with the actionable item. Use threads for detail. React with emoji when that's enough.
-- Treat a 👍 reaction on your Slack message as an approval (e.g., for a proposed action or decision).
-- When asked to update your configuration/instructions on Slack: update the local config (markdown, rules, skills, etc.), then open a PR so the team can review and merge. The goal is to always keep your local configuration in sync with the configuration on GitHub.
-- Heartbeats are silent in Slack by default. Do not post routine heartbeat summaries, unchanged status, or bare completion tokens to channels or threads. Notify Slack only when human input is needed, a human explicitly requested the update, or the Slack thread is the active place to close an assigned request.
-- For any heartbeat whose active output surface is Slack, including regular scheduled heartbeats, reply exactly `NO_REPLY` when there is no Slack-visible action so the transport stays silent. Use `HEARTBEAT_OK` only for non-Slack/internal heartbeat invokers.
-
-## Tone
-
-- Direct. No "Great question!" — just help.
-- Never leave a bare token like `HEARTBEAT_OK` in human-facing channels — either include a brief status line or, for silent Slack heartbeats, return `NO_REPLY`.
-- Have opinions. Yield when the team has decided, but make sure they had full information.
+Answer a direct question when the evidence is available. For assigned jobs,
+acknowledge once, then return with the result. Background maintenance stays
+quiet until there is a finding, a fix, or a decision.

@@ -1,17 +1,20 @@
-# rules/memory.md
+# Notes and unfinished work
 
-## Daily notes
+OpenClaw owns `MEMORY.md`, `DREAMS.md`, and `memory/YYYY-MM-DD.md` (flush and
+dreaming). Those files are local and untracked. Lasting team facts live in
+`USER.md`. Never copy private Slack into a committed file.
 
-Write to `memory/YYYY-MM-DD.md` only when a session creates useful durable context: decisions made, completed work worth remembering, or blockers future-you needs to understand. The file is local-only and never committed.
+Keep unfinished maintenance in local `code/heartbeat-state.json`. Example:
+[schemas/heartbeat-state.example.json](../schemas/heartbeat-state.example.json).
+Each item requires `repo`, `url` (string or null), `reason`, `next_action`,
+`updated_at`, `owner` (`albert` or `@login`), `goal`, `done_when`, and
+`evidence` (nonempty string list). Promised replies store `thread_url`. Waiting
+items store `resume_when` and UTC `next_check_at`.
 
-## Heartbeat state
+`bun scripts/heartbeat-state.ts due` prints `act`, `apply_default`, or
+`stay_quiet`. Remove an item only after the result is verified and any promised
+reply is sent, or a human cancels it.
 
-Use `code/heartbeat-state.json` for machine-readable heartbeat continuity: retry queue, deferred items, blockers, and last full heartbeat date. Keep entries small and actionable so the next session can resume without re-reading prose logs. This file is local-only, never committed, and must match `schemas/heartbeat-state.example.json`.
-
-## Long-term memory
-
-`MEMORY.md` holds curated context: lessons learned, recurring patterns, architectural decisions. Distill from daily notes and heartbeat state; remove outdated entries. Public document — never write secrets, tokens, or raw conversation dumps. Only update during solo sessions. Changes go through PRs per [change-control.md](change-control.md).
-
-## Friday cadence
-
-After the weekly report (ops-report): read the week's daily notes → distill into `MEMORY.md` → remove outdated entries → open a PR.
+When a core team member corrects a repeated mistake, open one instruction PR
+reviewed by `@francoischalifour`. That is the durable behavior change; do not
+encode procedures in memory files.
